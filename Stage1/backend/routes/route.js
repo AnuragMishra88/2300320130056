@@ -7,8 +7,9 @@ dotenv.config();
 const BASE_URL = process.env.BASE_URL;
 
 route.get("/productswithpriority", async (req, res) => {
-  const { topN } = req.body;
+  // const { topN = 10} = req.body;
   const headers = req.headers.authorization;
+  // console.log(headers);
   if (!headers) {
     res.status(400).json({
       message: "NO TOKEN FOUND",
@@ -37,7 +38,8 @@ route.get("/productswithpriority", async (req, res) => {
       return new Date(b.Timestamp) - new Date(a.Timestamp);
     });
 
-    const output = orderedData.slice(0, topN);
+    // const output = orderedData.slice(0, topN);
+    const output = orderedData.slice(0, 10);
 
     res.status(200).json({
       output
