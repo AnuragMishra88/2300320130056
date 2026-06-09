@@ -22,7 +22,7 @@ route.get("/productswithpriority", async (req, res) => {
       },
     });
     const data = await response.json();
-
+// console.log(data);
     const typeOrder = {
       Placement: 1,
       Result: 2,
